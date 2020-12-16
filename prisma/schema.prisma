@@ -1,0 +1,18 @@
+model User {
+  id    String @id @default(cuid())
+  name  String
+  posts Post[]
+}
+
+model Post {
+  id     String   @id @default(cuid())
+  user   User     @relation(references: [id], fields: [userId])
+  userId String
+  title  String
+  test   TestPost
+}
+
+enum TestPost {
+  TYPE1
+  TYPE2
+}
